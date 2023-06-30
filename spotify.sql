@@ -64,4 +64,5 @@ FROM cte1
 
 SELECT cte1.Country, CAST((cte1.total_users_countrywise * 1.0 / cte2.total_paid_users * 100) as int) as percent_paid
 FROM cte1 JOIN cte2 ON 1=1;
-
+-- Multiplying numerator with 1 is done to perform floating point division. If both numerator and denominator are integers then division is also int which may result in loss of decimal position.
+-- Finally, “CAST(... as INT)” casts result to integer.

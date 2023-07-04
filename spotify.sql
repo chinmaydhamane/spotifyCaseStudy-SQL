@@ -65,5 +65,10 @@ FROM cte1
 
 SELECT cte1.Country, CAST((cte1.total_users_countrywise * 1.0 / cte2.total_paid_users * 100) as int) as percent_paid
 FROM cte1 JOIN cte2 ON 1=1;
--- Multiplying numerator with 1 is done to perform floating point division. If both numerator and denominator are integers then division is also int which may result in loss of decimal position.
--- Finally, “CAST(... as INT)” casts result to integer.
+-- {Multiplying numerator with 1 is done to perform floating point division. If both numerator and denominator are integers 
+--then division is also int which may result in loss of decimal position.
+-- Finally, “CAST(... as INT)” casts result to integer.}
+
+-- { Since the join condition is always true (1=1 is always true), every row in cte1 will be joined with every row in cte2, 
+--regardless of any specific matching criteria.
+-- It performs a cross join or Cartesian product between cte1 and cte2, thus matching every row from first table with second table.}

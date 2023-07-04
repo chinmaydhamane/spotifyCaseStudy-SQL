@@ -49,6 +49,7 @@ ORDER BY event_date;
 
 
 -- 4. Percentage of Paid Users in India, USA and any other country should be tagged as others.
+-- percent paid users means: (paid_users_countrywise/(total users including unpaid))
 with cte1 as (
 select CASE WHEN country NOT IN ('India', 'USA') THEN 'others' ELSE country END AS country,
 count(DISTINCT user_id) as total_users_countrywise

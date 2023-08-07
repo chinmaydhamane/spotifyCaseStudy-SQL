@@ -34,6 +34,12 @@ SELECT WEEK(event_date) AS event_week, COUNT(DISTINCT user_id) AS weekly_users
 FROM activity5
 GROUP BY WEEK(event_date);
 
+    -- OR
+    select extract(WEEK FROM "event_date") as event_week, count(DISTINCT "user_id")
+    FROM "activity5"
+    GROUP BY extract(WEEK FROM "event_date");
+
+
 -- 3. Date wise total number of users who made the purchase same day they installed the app.
 with cte as (
 select user_id, event_date,
